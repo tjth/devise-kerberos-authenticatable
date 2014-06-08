@@ -1,4 +1,5 @@
 require 'devise_kerberos_authenticatable/strategy'
+require 'csv'
 
 module Devise
   module Models
@@ -28,6 +29,11 @@ module Devise
           if resource.blank?
             resource = new
             resource[:username] = attributes['username']
+	    csv_text = File.read("/home/guest/webapp/student_dump.csv")
+	    csv = CSV.parse(csv_text, :write_headers => true, :headers => ["Lastname", "Firstname", "Login", "Year", "Class", "dycode", "dystring"]
+	    r = csv.find{|row| row["Login"] == :username}
+	    resource[:dycode] = r["dycode"]
+	    resource[:dystring] = r["dystring"]
           end
 
           if resource.try(:valid_kerberos_authentication?, attributes[:password])
