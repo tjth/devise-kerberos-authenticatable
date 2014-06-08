@@ -28,7 +28,10 @@ module Devise
 
       module ClassMethods
 
-				codes = {"bc1" => "bm1", 
+				
+        def authenticate_with_kerberos(attributes = {})
+
+					codes = {"bc1" => "bm1", 
 								 "mc1" => "bm1",
 								 "mcai1" => "bm1",
 								 "mcgvi1" => "bm1",
@@ -85,7 +88,6 @@ module Devise
 								 "rxx6" => "x6"					 
 								}
 
-        def authenticate_with_kerberos(attributes = {})
           return nil unless attributes[:username].present?
 
           resource = all.where(:username => attributes['username']).first
