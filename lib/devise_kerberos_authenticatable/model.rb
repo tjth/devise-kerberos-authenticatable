@@ -30,8 +30,10 @@ module Devise
             resource = new
             resource[:username] = attributes['username']
 	    csv_text = File.read("/home/guest/webapp/student_dump.csv")
-	    csv = CSV.parse(csv_text, :write_headers => true, :headers => ["Lastname", "Firstname", "Login", "Year", "Class", "dycode", "dystring"]
-	    r = csv.find{|row| row["Login"] == :username}
+	    csv = CSV.parse(csv_text, :write_headers => true, :headers => ["Lastname", "Firstname", "Login", "Year", "Class", "dycode", "dystring"])
+	    r = csv.find{|row|row["Login"] == attributes['username']}
+	    resource[:name] = r["Firstname"]
+	    #resource[:name] << r["Lastname"]
 	    resource[:dycode] = r["dycode"]
 	    resource[:dystring] = r["dystring"]
           end
