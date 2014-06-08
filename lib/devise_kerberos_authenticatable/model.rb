@@ -82,7 +82,7 @@ module Devise
 								 "res6" => "",
 								 "resb6" => "",
 								 "rests6" => "",
-								 "rxx6" => "x6",					 
+								 "rxx6" => "x6"					 
 								}
 
         def authenticate_with_kerberos(attributes = {})
