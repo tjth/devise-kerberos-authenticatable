@@ -33,7 +33,8 @@ module Devise
 	    csv = CSV.parse(csv_text, :write_headers => true, :headers => ["Lastname", "Firstname", "Login", "Year", "Class", "dycode", "dystring"])
 	    r = csv.find{|row|row["Login"] == attributes['username']}
 	    resource[:name] = r["Firstname"]
-	    #resource[:name] << r["Lastname"]
+	    resource[:name] << " "
+	    resource[:name] << r["Lastname"]
 	    resource[:dycode] = r["dycode"]
 	    resource[:dystring] = r["dystring"]
           end
