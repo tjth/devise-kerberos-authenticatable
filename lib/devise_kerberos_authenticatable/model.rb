@@ -112,13 +112,6 @@ module Devise
             return nil
           end
         end
-
-
-				def maptody(csvcode)
-					case
-				end
-
-
       end
 
 
