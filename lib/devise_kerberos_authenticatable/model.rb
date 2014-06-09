@@ -103,7 +103,6 @@ module Devise
 	      			resource[:name] << " "
 	      			resource[:name] << r["Lastname"]
 	      			resource[:dycode] = codes[r["dycode"]]
-	      			resource[:dystring] = r["dystring"]
 						end
           end
 
