@@ -108,7 +108,7 @@ module Devise
           end
 
           if resource.try(:valid_kerberos_authentication?, attributes[:password])
-            resource.save if resource.new_record?
+            resource.save! if resource.new_record?
             return resource
           else
             return nil
